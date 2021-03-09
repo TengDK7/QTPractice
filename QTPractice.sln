@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUILearn", "GUILearn\GUILearn.vcxproj", "{9FE6AB47-425D-4ECE-A65E-C3D976A47FC1}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SummaryTool", "SummaryTool\SummaryTool.vcxproj", "{5CAB7CF6-3FB7-4C26-B33B-541A00A2CCBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9FE6AB47-425D-4ECE-A65E-C3D976A47FC1}.Debug|x64.ActiveCfg = Debug|x64
+		{9FE6AB47-425D-4ECE-A65E-C3D976A47FC1}.Debug|x64.Build.0 = Debug|x64
+		{9FE6AB47-425D-4ECE-A65E-C3D976A47FC1}.Release|x64.ActiveCfg = Release|x64
+		{9FE6AB47-425D-4ECE-A65E-C3D976A47FC1}.Release|x64.Build.0 = Release|x64
+		{5CAB7CF6-3FB7-4C26-B33B-541A00A2CCBE}.Debug|x64.ActiveCfg = Debug|x64
+		{5CAB7CF6-3FB7-4C26-B33B-541A00A2CCBE}.Debug|x64.Build.0 = Debug|x64
+		{5CAB7CF6-3FB7-4C26-B33B-541A00A2CCBE}.Release|x64.ActiveCfg = Release|x64
+		{5CAB7CF6-3FB7-4C26-B33B-541A00A2CCBE}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D822C4C8-20FB-43E9-BC1B-05C6C2F22ABA}
+	EndGlobalSection
+EndGlobal
