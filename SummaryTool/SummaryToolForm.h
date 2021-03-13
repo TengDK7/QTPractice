@@ -25,4 +25,6 @@ private slots:
     void statusBtnClick();
     void openthreaddlg();
     void opendrawfundlg();
+    void openmusicplayldg();
+    void openvidioplaydlg();
 };

@@ -2,6 +2,10 @@
 #include"pthread.h"
 #include<thread>
 
+pthread_t sid1;
+pthread_t sid2;
+pthread_t sid3;
+
 QThreadDlg::QThreadDlg(QDialog*parent)
 	: QDialog(parent)
 {
@@ -26,6 +30,7 @@ void* threadone(void* arg)
 		mui->label12->setText(QString::number(i));
 		i++;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
+		pthread_testcancel();
 	}
 	return 0;
 }
@@ -38,6 +43,7 @@ void* threadtwo(void* arg)
 		mui->label22->setText(QString::number(i));
 		i++;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
+		pthread_testcancel();
 	}
 	return 0;
 }
@@ -50,34 +56,36 @@ void* threadthree(void* arg)
 		mui->label32->setText(QString::number(i));
 		i++;
 		std::this_thread::sleep_for(std::chrono::seconds(1));
+		pthread_testcancel();
 	}
 	return 0;
 }
+
 void QThreadDlg::startone()
 {
-	pthread_t sid;
-	pthread_create(&sid, NULL, threadone, (void*)&ui);
+	pthread_create(&sid1, NULL, threadone, (void*)&ui);
 }
 void QThreadDlg::starttwo()
 {
-	pthread_t sid;
-	pthread_create(&sid, NULL, threadtwo, (void*)&ui);
+	pthread_create(&sid2, NULL, threadtwo, (void*)&ui);
 }
 
 void QThreadDlg::startthree()
 {
-	pthread_t sid;
-	pthread_create(&sid, NULL, threadthree, (void*)&ui);
+	pthread_create(&sid3, NULL, threadthree, (void*)&ui);
 }
 
 void QThreadDlg::endone()
 {
+	pthread_cancel(sid1);
 }
 
 void QThreadDlg::endtwo()
 {
+	pthread_cancel(sid2);
 }
 
 void QThreadDlg::endthree()
 {
+	pthread_cancel(sid3);
 }

@@ -44,6 +44,12 @@
     <ClCompile Include="DrawFunctionDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MusicPlayDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VidioPalyDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -65,12 +71,24 @@
     <QtMoc Include="DrawFunctionDlg.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="MusicPlayDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="VidioPalyDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QThreadDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="DrawFunctionDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MusicPlayDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="VidioPalyDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

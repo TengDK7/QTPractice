@@ -7,6 +7,8 @@
 #include"qfontdialog.h"
 #include"QThreadDlg.h"
 #include"DrawFunctionDlg.h"
+#include"MusicPlayDlg.h"
+#include"VidioPalyDlg.h"
 
 #define z QString::fromLocal8Bit//通用宏
 
@@ -119,15 +121,23 @@ void SummaryToolForm::InitToolBar()
 
     QAction* drawfun = new QAction(z("绘图"), this);
 
+    QAction* musicplay = new QAction(z("音乐"), this);
+
+    QAction* vidioplay = new QAction(z("视频"),this);
+
     connect(openfile, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(closefile, SIGNAL(triggered()), this, SLOT(closeFIle()));
     connect(threadtest, SIGNAL(triggered()), this, SLOT(openthreaddlg()));
     connect(drawfun, SIGNAL(triggered()), this, SLOT(opendrawfundlg()));
+    connect(musicplay, SIGNAL(triggered()), this, SLOT(openmusicplayldg()));
+    connect(vidioplay, SIGNAL(triggered()), this, SLOT(openvidioplaydlg()));
 
     ui.mainToolBar->addAction(openfile);
     ui.mainToolBar->addAction(closefile);
     ui.mainToolBar->addAction(threadtest);
     ui.mainToolBar->addAction(drawfun);
+    ui.mainToolBar->addAction(musicplay);
+    ui.mainToolBar->addAction(vidioplay);
 }
 
 void SummaryToolForm::openFile()
@@ -149,6 +159,17 @@ void SummaryToolForm::opendrawfundlg()
 {
     DrawFunctionDlg* dlg = new DrawFunctionDlg();//控件,设置父窗口时嵌入父窗口，否则独立窗口
     dlg->show();//没有模态非模态之分
+}
+void SummaryToolForm::openmusicplayldg()
+{
+    MusicPlayDlg dlg(this);
+    dlg.exec();
+}
+void SummaryToolForm::openvidioplaydlg()
+{
+    VidioPalyDlg* dlg = new VidioPalyDlg(this);
+    dlg->setModal(true);
+    dlg->show();
 }
 #pragma endregion
 

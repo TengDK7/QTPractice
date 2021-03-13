@@ -57,7 +57,7 @@
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc2017_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;multimedia;multimediawidgets;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -95,19 +95,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="VidioPalyDlg.cpp" />
     <QtRcc Include="SummaryTool.qrc" />
     <QtUic Include="DrawFunctionDlg.ui" />
+    <QtUic Include="MusicPlayDlg.ui" />
     <QtUic Include="QThreadDlg.ui" />
     <QtUic Include="SummaryTool.ui" />
     <QtMoc Include="SummaryToolForm.h" />
     <ClCompile Include="DrawFunctionDlg.cpp" />
+    <ClCompile Include="MusicPlayDlg.cpp" />
     <ClCompile Include="QThreadDlg.cpp" />
     <ClCompile Include="SummaryToolForm.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="VidioPalyDlg.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="VidioPalyDlg.h" />
     <QtMoc Include="QThreadDlg.h" />
     <QtMoc Include="DrawFunctionDlg.h" />
+    <QtMoc Include="MusicPlayDlg.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

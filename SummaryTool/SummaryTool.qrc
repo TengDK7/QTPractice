@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/SummaryTool">
         <file>res/Icon/1270513.ico</file>
+        <file>res/Icon/1270514.ico</file>
+        <file>res/Icon/1270519.ico</file>
     </qresource>
 </RCC>

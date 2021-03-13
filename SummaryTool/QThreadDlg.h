@@ -13,6 +13,7 @@ public:
 
 private:
 	Ui::QThreadDlg ui;
+
 private slots:
 	void startone();
 	void starttwo();
