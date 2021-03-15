@@ -157,8 +157,9 @@ void SummaryToolForm::openthreaddlg()
 }
 void SummaryToolForm::opendrawfundlg()
 {
-    DrawFunctionDlg* dlg = new DrawFunctionDlg();//控件,设置父窗口时嵌入父窗口，否则独立窗口
-    dlg->show();//没有模态非模态之分
+    DrawFunctionDlg* dlg = new DrawFunctionDlg();
+    dlg->setModal(true);
+    dlg->show();
 }
 void SummaryToolForm::openmusicplayldg()
 {

@@ -11,48 +11,12 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>绘图测试(非模态)</string>
+   <string>绘图测试</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>0</y>
-     <width>320</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="pushButtonLine">
-      <property name="text">
-       <string>线段</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonRect">
-      <property name="text">
-       <string>矩形</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonCycle">
-      <property name="text">
-       <string>圆形</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="pushButtonClear">
-      <property name="text">
-       <string>清空</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/Icon/1270525.ico</normaloff>res/Icon/1270525.ico</iconset>
+  </property>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

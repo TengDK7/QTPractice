@@ -1,9 +1,9 @@
 #pragma once
 
-#include <QWidget>
+#include <QDialog>
 #include "ui_DrawFunctionDlg.h"
 
-class DrawFunctionDlg : public QWidget
+class DrawFunctionDlg : public QDialog
 {
 	Q_OBJECT
 

@@ -1,7 +1,7 @@
 #include "DrawFunctionDlg.h"
 
 DrawFunctionDlg::DrawFunctionDlg(QWidget *parent)
-	: QWidget(parent)
+	: QDialog(parent)
 {
 	ui.setupUi(this);
 }

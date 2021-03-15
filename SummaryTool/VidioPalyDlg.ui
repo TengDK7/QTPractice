@@ -13,6 +13,198 @@
   <property name="windowTitle">
    <string>VidioPalyDlg</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/Icon/1270519.ico</normaloff>res/Icon/1270519.ico</iconset>
+  </property>
+  <widget class="QWidget" name="vidiowidget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-1</x>
+     <y>29</y>
+     <width>771</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>440</y>
+     <width>981</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>779</x>
+     <y>9</y>
+     <width>191</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>播放列表</string>
+   </property>
+   <widget class="QListView" name="vidioListView">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>21</y>
+      <width>171</width>
+      <height>401</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QSlider" name="playSlider">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>420</y>
+     <width>761</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonStart">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>播放</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonNext">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>下一个</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>490</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>速度：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>490</y>
+     <width>31</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>音量：</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBoxSpeed">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>490</y>
+     <width>69</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>100%</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>125%</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>150%</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QSlider" name="volumnSlider">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>490</y>
+     <width>101</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonAddFile">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>添加文件</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonAddDir">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>添加目录</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButtonStop">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>490</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>停止</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
