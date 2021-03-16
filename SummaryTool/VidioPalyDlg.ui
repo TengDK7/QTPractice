@@ -26,6 +26,9 @@
      <height>381</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);</string>
+   </property>
   </widget>
   <widget class="Line" name="line">
    <property name="geometry">
