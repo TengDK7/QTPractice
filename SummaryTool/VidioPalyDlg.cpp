@@ -139,7 +139,7 @@ void VidioPalyDlg::addDirClick()
 				continue;
 			
 			auto item = new QStandardItem(filename);
-			item->setData(file.filePath());
+			item->setData(file.filePath()); 
 			playListModel->appendRow(item);
 		}
 	}
@@ -167,7 +167,24 @@ void VidioPalyDlg::stopClick()
 
 void VidioPalyDlg::nextClick()
 {
-
+	auto len = playListModel->rowCount();
+	if (len == 0)
+		return;
+	auto index = ui.vidioListView->currentIndex().row();
+	if (index < len - 1)
+	{
+		index += 1;
+	}
+	else if (index == len - 1)
+	{
+		index = 0;
+	}
+	auto qindex = playListModel->index(index, 0);
+	ui.vidioListView->setCurrentIndex(qindex);
+	auto itemdata = playListModel->item(index);
+	auto path = itemdata->data().toString();
+	player->setMedia(QUrl::fromLocalFile(path));
+	player->play();
 }
 
 void VidioPalyDlg::volumnSlidChange(int value)

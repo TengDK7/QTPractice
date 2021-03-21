@@ -169,24 +169,12 @@ void MusicPlayDlg::buttonBrowserClick()
 
 		for each (auto file in files)
 		{
-			auto fullpath = file.fileName();
+			auto fullpath = file.filePath();
 			if (!fullpath.endsWith(".mp3") && !fullpath.endsWith(".wav"))
 				continue;
-			strlist << file.fileName();
+			strlist << fullpath;
 		}
 		listModel->setStringList(strlist);//需要重新设置，因为此函数是复制后set
-
-		int index = 0;
-		for each (auto file in files)
-		{
-			auto fullpath = file.fileName();
-			if (!fullpath.endsWith(".mp3") && !fullpath.endsWith(".wav"))
-				continue;
-
-			auto sel = listModel->index(index);
-			listModel->setData(sel, file.filePath());
-			index++;
-		}
 	}
 }
 #pragma endregion
@@ -265,8 +253,8 @@ void MusicPlayDlg::playerStateChange(QMediaPlayer::State state)
 /// <param name="index"></param>
 void MusicPlayDlg::listViewDoubleClick(const QModelIndex& index)
 {
-	auto date = listModel->data(index);
-	player->setMedia(QUrl::fromLocalFile(date.toString()));
+	auto path = listModel->data(index);
+	player->setMedia(QUrl::fromLocalFile(path.toString()));
 	player->play();
 }
 #pragma endregion
