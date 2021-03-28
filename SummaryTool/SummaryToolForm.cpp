@@ -11,6 +11,7 @@
 #include"VidioPalyDlg.h"
 #include"LayoutDlg.h"
 #include"FileOperatorDlg.h"
+#include"ImportLibraryDlg.h"
 
 #define z QString::fromLocal8Bit//通用宏
 
@@ -124,6 +125,7 @@ void SummaryToolForm::InitToolBar()
     QAction* vidioplay = new QAction(z("视频"),this);
     QAction* layouttest = new QAction(z("布局"), this);
     QAction* fileoperator = new QAction(z("文件"), this);
+    QAction* loadlibrary = new QAction(z("加载库"), this);
 
     connect(openfile, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(closefile, SIGNAL(triggered()), this, SLOT(closeFIle()));
@@ -133,6 +135,7 @@ void SummaryToolForm::InitToolBar()
     connect(vidioplay, SIGNAL(triggered()), this, SLOT(openvidioplaydlg()));
     connect(layouttest, SIGNAL(triggered()), this, SLOT(openlayouttestdlg()));
     connect(fileoperator, SIGNAL(triggered()), this, SLOT(openfileoperatordlg()));
+    connect(loadlibrary, SIGNAL(triggered()), this, SLOT(openloadlibrarydlg()));
 
     ui.mainToolBar->addAction(openfile);
     ui.mainToolBar->addAction(closefile);
@@ -142,6 +145,7 @@ void SummaryToolForm::InitToolBar()
     ui.mainToolBar->addAction(vidioplay);
     ui.mainToolBar->addAction(layouttest);
     ui.mainToolBar->addAction(fileoperator);
+    ui.mainToolBar->addAction(loadlibrary);
 }
 
 void SummaryToolForm::openFile()
@@ -185,6 +189,12 @@ void SummaryToolForm::openlayouttestdlg()
 void SummaryToolForm::openfileoperatordlg()
 {
     FileOperatorDlg* dlg = new FileOperatorDlg();
+    dlg->setModal(true);
+    dlg->show();
+}
+void SummaryToolForm::openloadlibrarydlg()
+{
+    ImportLibraryDlg* dlg = new ImportLibraryDlg();
     dlg->setModal(true);
     dlg->show();
 }

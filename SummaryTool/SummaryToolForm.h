@@ -29,4 +29,5 @@ private slots:
     void openvidioplaydlg();
     void openlayouttestdlg();
     void openfileoperatordlg();
+    void openloadlibrarydlg();
 };

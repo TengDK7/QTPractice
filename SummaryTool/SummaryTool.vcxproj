@@ -50,6 +50,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -96,11 +97,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FileOperatorDlg.cpp" />
+    <ClCompile Include="ImportLibraryDlg.cpp" />
     <ClCompile Include="LayoutDlg.cpp" />
     <ClCompile Include="VidioPalyDlg.cpp" />
     <QtRcc Include="SummaryTool.qrc" />
     <QtUic Include="DrawFunctionDlg.ui" />
     <QtUic Include="FileOperatorDlg.ui" />
+    <QtUic Include="ImportLibraryDlg.ui" />
     <QtUic Include="LayoutDlg.ui" />
     <QtUic Include="MusicPlayDlg.ui" />
     <QtUic Include="QThreadDlg.ui" />
@@ -120,10 +123,14 @@
     <QtMoc Include="MusicPlayDlg.h" />
     <QtMoc Include="FileOperatorDlg.h" />
     <QtMoc Include="LayoutDlg.h" />
+    <QtMoc Include="ImportLibraryDlg.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SummaryTool.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\x64\Debug\MyDll_D2.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

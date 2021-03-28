@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ImportLibraryDlg</class>
+ <widget class="QDialog" name="ImportLibraryDlg">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>419</width>
+    <height>582</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ImportLibraryDlg</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>res/Icon/1270529.ico</normaloff>res/Icon/1270529.ico</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QPushButton" name="pushButton1">
+     <property name="text">
+      <string>调用库一</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton2">
+     <property name="text">
+      <string>调用库二</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton3">
+     <property name="text">
+      <string>调用库三</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton4">
+     <property name="text">
+      <string>调用库四</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton5">
+     <property name="text">
+      <string>调用库五</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton6">
+     <property name="text">
+      <string>调用库六</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton7">
+     <property name="text">
+      <string>调用库七</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton8">
+     <property name="text">
+      <string>调用库八</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton9">
+     <property name="text">
+      <string>调用库九</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

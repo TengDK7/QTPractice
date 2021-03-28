@@ -1,0 +1,5 @@
+LIBRARY
+
+EXPORTS
+add_d2
+renamereduce=reduce_d2

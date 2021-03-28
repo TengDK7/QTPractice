@@ -56,6 +56,9 @@
     <ClCompile Include="LayoutDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ImportLibraryDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -89,6 +92,9 @@
     <QtMoc Include="LayoutDlg.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ImportLibraryDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QThreadDlg.ui">
@@ -109,5 +115,11 @@
     <QtUic Include="LayoutDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="ImportLibraryDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\x64\Debug\MyDll_D2.lib" />
   </ItemGroup>
 </Project>
