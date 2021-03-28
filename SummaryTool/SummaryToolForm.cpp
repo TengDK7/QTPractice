@@ -9,6 +9,8 @@
 #include"DrawFunctionDlg.h"
 #include"MusicPlayDlg.h"
 #include"VidioPalyDlg.h"
+#include"LayoutDlg.h"
+#include"FileOperatorDlg.h"
 
 #define z QString::fromLocal8Bit//通用宏
 
@@ -116,14 +118,12 @@ void SummaryToolForm::InitToolBar()
 {
     QAction* openfile = new QAction(z("打开"), this);
     QAction* closefile = new QAction(z("关闭"), this);
-
     QAction* threadtest = new QAction(z("线程"), this);
-
     QAction* drawfun = new QAction(z("绘图"), this);
-
     QAction* musicplay = new QAction(z("音乐"), this);
-
     QAction* vidioplay = new QAction(z("视频"),this);
+    QAction* layouttest = new QAction(z("布局"), this);
+    QAction* fileoperator = new QAction(z("文件"), this);
 
     connect(openfile, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(closefile, SIGNAL(triggered()), this, SLOT(closeFIle()));
@@ -131,6 +131,8 @@ void SummaryToolForm::InitToolBar()
     connect(drawfun, SIGNAL(triggered()), this, SLOT(opendrawfundlg()));
     connect(musicplay, SIGNAL(triggered()), this, SLOT(openmusicplayldg()));
     connect(vidioplay, SIGNAL(triggered()), this, SLOT(openvidioplaydlg()));
+    connect(layouttest, SIGNAL(triggered()), this, SLOT(openlayouttestdlg()));
+    connect(fileoperator, SIGNAL(triggered()), this, SLOT(openfileoperatordlg()));
 
     ui.mainToolBar->addAction(openfile);
     ui.mainToolBar->addAction(closefile);
@@ -138,6 +140,8 @@ void SummaryToolForm::InitToolBar()
     ui.mainToolBar->addAction(drawfun);
     ui.mainToolBar->addAction(musicplay);
     ui.mainToolBar->addAction(vidioplay);
+    ui.mainToolBar->addAction(layouttest);
+    ui.mainToolBar->addAction(fileoperator);
 }
 
 void SummaryToolForm::openFile()
@@ -169,6 +173,18 @@ void SummaryToolForm::openmusicplayldg()
 void SummaryToolForm::openvidioplaydlg()
 {
     VidioPalyDlg* dlg = new VidioPalyDlg(this);
+    dlg->setModal(true);
+    dlg->show();
+}
+void SummaryToolForm::openlayouttestdlg()
+{
+    LayoutDlg* dlg = new LayoutDlg(this);
+    dlg->setModal(true);
+    dlg->show();
+}
+void SummaryToolForm::openfileoperatordlg()
+{
+    FileOperatorDlg* dlg = new FileOperatorDlg();
     dlg->setModal(true);
     dlg->show();
 }

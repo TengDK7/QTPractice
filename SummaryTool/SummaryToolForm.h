@@ -27,4 +27,6 @@ private slots:
     void opendrawfundlg();
     void openmusicplayldg();
     void openvidioplaydlg();
+    void openlayouttestdlg();
+    void openfileoperatordlg();
 };

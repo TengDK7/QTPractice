@@ -95,9 +95,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileOperatorDlg.cpp" />
+    <ClCompile Include="LayoutDlg.cpp" />
     <ClCompile Include="VidioPalyDlg.cpp" />
     <QtRcc Include="SummaryTool.qrc" />
     <QtUic Include="DrawFunctionDlg.ui" />
+    <QtUic Include="FileOperatorDlg.ui" />
+    <QtUic Include="LayoutDlg.ui" />
     <QtUic Include="MusicPlayDlg.ui" />
     <QtUic Include="QThreadDlg.ui" />
     <QtUic Include="SummaryTool.ui" />
@@ -114,6 +118,8 @@
     <QtMoc Include="QThreadDlg.h" />
     <QtMoc Include="DrawFunctionDlg.h" />
     <QtMoc Include="MusicPlayDlg.h" />
+    <QtMoc Include="FileOperatorDlg.h" />
+    <QtMoc Include="LayoutDlg.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

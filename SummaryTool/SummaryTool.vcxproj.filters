@@ -50,6 +50,12 @@
     <ClCompile Include="VidioPalyDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileOperatorDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LayoutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -77,6 +83,12 @@
     <QtMoc Include="VidioPalyDlg.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="FileOperatorDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="LayoutDlg.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="QThreadDlg.ui">
@@ -89,6 +101,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="VidioPalyDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="FileOperatorDlg.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LayoutDlg.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
