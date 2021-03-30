@@ -13,4 +13,13 @@ public:
 
 private:
 	Ui::FileOperatorDlg ui;
+
+private slots:
+	void newFile();
+	void openFile();
+	void saveFile();
+	void saveFileAs();
+	void renameFile();
+	void copyFile();
+	void deleteFile();
 };
