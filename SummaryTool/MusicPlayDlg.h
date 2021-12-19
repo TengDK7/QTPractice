@@ -4,6 +4,7 @@
 #include<QtMultimedia/qmediaplayer.h>
 #include<qstringlistmodel.h>
 #include "ui_MusicPlayDlg.h"
+#include"qaudiooutput.h"
 
 class MusicPlayDlg : public QDialog
 {
@@ -18,6 +19,7 @@ private:
 	QMediaPlayer* player;
 	QStringListModel* listModel;
 	QStringList strlist;
+	QAudioOutput* ao = new QAudioOutput();
 private:
 	void InitCtrlStatus();
 
@@ -34,6 +36,6 @@ private slots:
 	void playerDurationChange(qint64 len);
 	void columnSliderValueChange(int value);
 	void combCurIndexChange(int index);
-	void playerStateChange(QMediaPlayer::State state);
+	void playerStateChange(QMediaPlayer::PlaybackState state);
 	void listViewDoubleClick(const QModelIndex& index);
 };

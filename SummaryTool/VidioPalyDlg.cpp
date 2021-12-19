@@ -28,8 +28,8 @@ void VidioPalyDlg::InitControls()
 	layout->addWidget(vw);
 	ui.vidiowidget->setLayout(layout);
 	player->setVideoOutput(vw);
-
-	player->setVolume(30);
+	ao->setVolume(30);
+	player->setAudioOutput(ao);
 	player->setPlaybackRate(1);
 	connect(player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(playerStateChange(QMediaPlayer::State)));
 	connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(playerPositonChange(qint64)));
@@ -59,11 +59,11 @@ void VidioPalyDlg::videoListPressed(const QModelIndex& index)
 {
 	auto item = playListModel->item(index.row());//从数据模型中取数据
 	auto filepath = item->data().toString();
-	player->setMedia(QUrl::fromLocalFile(filepath));
+	player->setSource(QUrl::fromLocalFile(filepath));
 	player->play();
 }
 #pragma region 播放槽
-void VidioPalyDlg::playerStateChange(QMediaPlayer::State state)
+void VidioPalyDlg::playerStateChange(QMediaPlayer::PlaybackState state)
 {
 	switch (state)
 	{
@@ -125,7 +125,7 @@ void VidioPalyDlg::addDirClick()
 {
 	QFileDialog* dlg = new QFileDialog();
 	dlg->setModal(true);
-	dlg->setFileMode(QFileDialog::FileMode::DirectoryOnly);
+	dlg->setFileMode(QFileDialog::FileMode::Directory);
 	if (dlg->exec() == QFileDialog::Accepted)
 	{
 		auto path = dlg->selectedFiles()[0];
@@ -183,13 +183,13 @@ void VidioPalyDlg::nextClick()
 	ui.vidioListView->setCurrentIndex(qindex);
 	auto itemdata = playListModel->item(index);
 	auto path = itemdata->data().toString();
-	player->setMedia(QUrl::fromLocalFile(path));
+	player->setSource(QUrl::fromLocalFile(path));
 	player->play();
 }
 
 void VidioPalyDlg::volumnSlidChange(int value)
 {
-	player->setVolume(value);
+	ao->setVolume(value);
 }
 
 void VidioPalyDlg::playSlidChange()

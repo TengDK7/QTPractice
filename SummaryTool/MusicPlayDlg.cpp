@@ -37,7 +37,8 @@ void MusicPlayDlg::InitCtrlStatus()
 
 	//music player init
 	player = new QMediaPlayer();
-	player->setVolume(30);
+	ao->setVolume(30);
+	player->setAudioOutput(ao);
 	player->setPlaybackRate(1);
 	connect(player, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(playerStateChange(QMediaPlayer::State)));
 	connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(playerPositonChange(qint64)));
@@ -105,7 +106,7 @@ void MusicPlayDlg::buttonNextClick()
 	auto index = listModel->index(cur);
 	ui.musicListView->setCurrentIndex(index);
 	auto data = listModel->data(index);
-	player->setMedia(QUrl::fromLocalFile(data.toString()));
+	player->setSource(QUrl::fromLocalFile(data.toString()));
 	player->play();
 }
 /// <summary>
@@ -128,7 +129,7 @@ void MusicPlayDlg::buttonPreClick()
 	auto index = listModel->index(cur);
 	ui.musicListView->setCurrentIndex(index);
 	auto data = listModel->data(index);
-	player->setMedia(QUrl::fromLocalFile(data.toString()));
+	player->setSource(QUrl::fromLocalFile(data.toString()));
 	player->play();
 }
 /// <summary>
@@ -157,7 +158,7 @@ QFileInfoList GetFileList(QString path)
 void MusicPlayDlg::buttonBrowserClick()
 {
 	auto dlg = new QFileDialog(this);
-	dlg->setFileMode(QFileDialog::FileMode::DirectoryOnly);
+	dlg->setFileMode(QFileDialog::FileMode::Directory);
 	dlg->setDirectory(".");
 	auto res = dlg->exec();
 	if (res == QFileDialog::Accepted)
@@ -203,7 +204,7 @@ void MusicPlayDlg::playerDurationChange(qint64 len)
 /// <param name="value"></param>
 void MusicPlayDlg::columnSliderValueChange(int value)
 {
-	player->setVolume(value);
+	ao->setVolume(value);
 }
 /// <summary>
 /// 响应播放速度变化
@@ -230,7 +231,7 @@ void MusicPlayDlg::combCurIndexChange(int index)
 /// 响应播放状态变化
 /// </summary>
 /// <param name="state"></param>
-void MusicPlayDlg::playerStateChange(QMediaPlayer::State state)
+void MusicPlayDlg::playerStateChange(QMediaPlayer::PlaybackState state)
 {
 	switch (state)
 	{
@@ -254,7 +255,7 @@ void MusicPlayDlg::playerStateChange(QMediaPlayer::State state)
 void MusicPlayDlg::listViewDoubleClick(const QModelIndex& index)
 {
 	auto path = listModel->data(index);
-	player->setMedia(QUrl::fromLocalFile(path.toString()));
+	player->setSource(QUrl::fromLocalFile(path.toString()));
 	player->play();
 }
 #pragma endregion

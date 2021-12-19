@@ -6,6 +6,7 @@
 #include<QBoxLayout.h>
 #include<qstandarditemmodel.h>
 #include "ui_VidioPalyDlg.h"
+#include"qaudiooutput.h"
 
 class VidioPalyDlg : public QDialog
 {
@@ -21,6 +22,7 @@ private:
 	QMediaPlayer* player = new QMediaPlayer();
 	QVBoxLayout* layout = new QVBoxLayout();
 	QVideoWidget* vw = new QVideoWidget();
+	QAudioOutput* ao = new QAudioOutput();
 
 	QStandardItemModel* playListModel = new QStandardItemModel(this);
 
@@ -40,7 +42,7 @@ private slots:
 	void playSlidChange();
 	void speedCombChange(int value);
 
-	void playerStateChange(QMediaPlayer::State state);
+	void playerStateChange(QMediaPlayer::PlaybackState state);
 	void playerPositonChange(qint64 value);
 	void playerDurationChange(qint64 value);
 
