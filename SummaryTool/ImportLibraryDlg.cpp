@@ -1,6 +1,6 @@
 #include "ImportLibraryDlg.h"
 #include"qmessagebox.h"
-#define z QString::fromLocal8Bit
+#define z QString::fromUtf8
 
 //载入库MyDll_D1(方法一)
 #include"../MyDll_D1/Math.h"

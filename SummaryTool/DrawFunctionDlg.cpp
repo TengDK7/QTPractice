@@ -1,8 +1,8 @@
-#include<qpainter.h>
+ï»¿#include<qpainter.h>
 #include "DrawFunctionDlg.h"
 #include <Qt>
 
-#define z QString::fromLocal8Bit
+#define z QString::fromUtf8
 
 DrawFunctionDlg::DrawFunctionDlg(QWidget *parent)
 	: QDialog(parent)
@@ -17,12 +17,12 @@ DrawFunctionDlg::~DrawFunctionDlg()
 
 void DrawFunctionDlg::InitControl()
 {
-	auto actionline = toolBar->addAction(z("Ö±Ïß"));
-	auto actionRect = toolBar->addAction(z("¾ØÐÎ"));
-	auto actionCircle = toolBar->addAction(z("Ô²"));
-	auto actionPic = toolBar->addAction(z("Í¼Æ¬"));
-	auto actiontext = toolBar->addAction(z("ÎÄ±¾"));
-	auto actionClear = toolBar->addAction(z("Çå¿Õ"));
+	auto actionline = toolBar->addAction(z("ç›´çº¿"));
+	auto actionRect = toolBar->addAction(z("çŸ©å½¢"));
+	auto actionCircle = toolBar->addAction(z("åœ†"));
+	auto actionPic = toolBar->addAction(z("å›¾ç‰‡"));
+	auto actiontext = toolBar->addAction(z("æ–‡æœ¬"));
+	auto actionClear = toolBar->addAction(z("æ¸…ç©º"));
 
 	connect(toolBar, SIGNAL(actionTriggered(QAction *)), this, SLOT(actionTriggered(QAction *)));
 }
@@ -100,7 +100,7 @@ void DrawFunctionDlg::paintEvent(QPaintEvent* info)
 		pen.setColor(Qt::darkGreen);
 		pen.setWidth(5);
 		painter.setPen(pen);
-		painter.drawText(QPoint(50,50), z("»æÖÆÎÄ±¾²âÊÔÎÄ±¾"));
+		painter.drawText(QPoint(50,50), z("ç»˜åˆ¶æ–‡æœ¬æµ‹è¯•æ–‡æœ¬"));
 	}
 	}
 	painter.end();
@@ -111,30 +111,30 @@ void DrawFunctionDlg::actionTriggered(QAction* action)
 	if (action == nullptr)
 		return;
 	auto text = action->text();
-	if (text == z("Ö±Ïß"))
+	if (text == z("ç›´çº¿"))
 	{
 		curAction = ActionType::LINE;
 	}
-	else if (text == z("¾ØÐÎ"))
+	else if (text == z("çŸ©å½¢"))
 	{
 		curAction = ActionType::RECT;
 	}
-	else if (text == z("Ô²"))
+	else if (text == z("åœ†"))
 	{
 		curAction = ActionType::CIRCLE;
 	}
-	else if (text == z("Í¼Æ¬"))
+	else if (text == z("å›¾ç‰‡"))
 	{
 		curAction = ActionType::PICTURE;
 	}
-	else if (text == z("ÎÄ±¾"))
+	else if (text == z("æ–‡æœ¬"))
 	{
 		curAction = ActionType::TEXT;
 	}
-	else if (text == z("Çå¿Õ"))
+	else if (text == z("æ¸…ç©º"))
 	{
 		curAction = ActionType::NONE;
 	}
 	this->repaint();
-	//this->update();//»òÕß
+	//this->update();//æˆ–è€…
 }

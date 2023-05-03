@@ -1,7 +1,7 @@
-#include "VidioPalyDlg.h"
+ï»¿#include "VidioPalyDlg.h"
 #include"qfiledialog.h"
 
-#define z QString::fromLocal8Bit
+#define z QString::fromUtf8
 
 VidioPalyDlg::VidioPalyDlg(QWidget *parent)
 	: QDialog(parent)
@@ -57,24 +57,24 @@ void VidioPalyDlg::closeEvent(QCloseEvent*)
 }
 void VidioPalyDlg::videoListPressed(const QModelIndex& index)
 {
-	auto item = playListModel->item(index.row());//´ÓÊý¾ÝÄ£ÐÍÖÐÈ¡Êý¾Ý
+	auto item = playListModel->item(index.row());//ä»Žæ•°æ®æ¨¡åž‹ä¸­å–æ•°æ®
 	auto filepath = item->data().toString();
 	player->setSource(QUrl::fromLocalFile(filepath));
 	player->play();
 }
-#pragma region ²¥·Å²Û
+#pragma region æ’­æ”¾æ§½
 void VidioPalyDlg::playerStateChange(QMediaPlayer::PlaybackState state)
 {
 	switch (state)
 	{
 	case QMediaPlayer::StoppedState:
-		ui.pushButtonStart->setText(z("²¥·Å"));
+		ui.pushButtonStart->setText(z("æ’­æ”¾"));
 		break;
 	case QMediaPlayer::PlayingState:
-		ui.pushButtonStart->setText(z("ÔÝÍ£"));
+		ui.pushButtonStart->setText(z("æš‚åœ"));
 		break;
 	case QMediaPlayer::PausedState:
-		ui.pushButtonStart->setText(z("²¥·Å"));
+		ui.pushButtonStart->setText(z("æ’­æ”¾"));
 		break;
 	default:
 		break;
@@ -86,23 +86,23 @@ void VidioPalyDlg::playerPositonChange(qint64 value)
 }
 void VidioPalyDlg::playerDurationChange(qint64 value)
 {
-	ui.playSlider->setRange(0, value / 1000);//Ãë
+	ui.playSlider->setRange(0, value / 1000);//ç§’
 	ui.playSlider->setValue(0);
 }
 #pragma endregion
 
 
-#pragma region ÏìÓ¦²Û
+#pragma region å“åº”æ§½
 void VidioPalyDlg::addFileClick()
 {
-	auto filepath = QFileDialog::getOpenFileName(this, z("Ñ¡ÔñÎÄ¼þ"), ".", z("mp4ÎÄ¼þ(*.mp4)"));
+	auto filepath = QFileDialog::getOpenFileName(this, z("é€‰æ‹©æ–‡ä»¶"), ".", z("mp4æ–‡ä»¶(*.mp4)"));
 	if (QFile::exists(filepath))
 	{
 		QFileInfo file(filepath);
 		auto filename = file.fileName();
 		
 		auto item = new QStandardItem(filename);
-		item->setData(filepath);//ÏòÊý¾ÝÄ£ÐÍÖÐ´æÊý¾Ý
+		item->setData(filepath);//å‘æ•°æ®æ¨¡åž‹ä¸­å­˜æ•°æ®
 		playListModel->appendRow(item);
 	}
 }
@@ -132,7 +132,7 @@ void VidioPalyDlg::addDirClick()
 		auto files = GetFileLists(path);
 
 		playListModel->clear();
-		for each (auto file in files)
+		for(auto file : files)
 		{
 			auto filename = file.fileName();
 			if (!filename.endsWith(".mp4"))
@@ -148,15 +148,15 @@ void VidioPalyDlg::addDirClick()
 void VidioPalyDlg::playClick()
 {
 	auto text = ui.pushButtonStart->text();
-	if (text == z("²¥·Å"))
+	if (text == z("æ’­æ”¾"))
 	{
 		player->play();
-		ui.pushButtonStart->setText(z("ÔÝÍ£"));
+		ui.pushButtonStart->setText(z("æš‚åœ"));
 	}
-	else if (text == z("ÔÝÍ£"))
+	else if (text == z("æš‚åœ"))
 	{
 		player->pause();
-		ui.pushButtonStart->setText(z("²¥·Å"));
+		ui.pushButtonStart->setText(z("æ’­æ”¾"));
 	}
 }
 

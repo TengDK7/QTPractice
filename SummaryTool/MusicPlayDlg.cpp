@@ -1,8 +1,8 @@
-#include "MusicPlayDlg.h"
+ï»¿#include "MusicPlayDlg.h"
 #include"qfiledialog.h"
 
 
-#define z QString::fromLocal8Bit
+#define z QString::fromUtf8
 
 MusicPlayDlg::MusicPlayDlg(QWidget *parent)
 	: QDialog(parent)
@@ -14,9 +14,9 @@ MusicPlayDlg::MusicPlayDlg(QWidget *parent)
 MusicPlayDlg::~MusicPlayDlg()
 {
 }
-#pragma region ³õÊ¼»¯ÔªËØ
+#pragma region åˆå§‹åŒ–å…ƒç´ 
 /// <summary>
-/// ³õÊ¼»¯
+/// åˆå§‹åŒ–
 /// </summary>
 void MusicPlayDlg::InitCtrlStatus()
 {
@@ -62,36 +62,36 @@ void MusicPlayDlg::InitCtrlStatus()
 }
 #pragma endregion
 
-#pragma region °´Å¥ÏìÓ¦
+#pragma region æŒ‰é’®å“åº”
 /// <summary>
-/// ²¥·Å°´Å¥µã»÷
+/// æ’­æ”¾æŒ‰é’®ç‚¹å‡»
 /// </summary>
 void MusicPlayDlg::buttonStartClick()
 {
-	if (ui.pushButtonpausestart->text() == z("²¥·Å"))
+	if (ui.pushButtonpausestart->text() == z("æ’­æ”¾"))
 	{
 		player->play();
-		ui.pushButtonpausestart->setText(z("ÔİÍ£"));
+		ui.pushButtonpausestart->setText(z("æš‚åœ"));
 	}
-	else if (ui.pushButtonpausestart->text() == z("ÔİÍ£"))
+	else if (ui.pushButtonpausestart->text() == z("æš‚åœ"))
 	{
 		player->pause();
-		ui.pushButtonpausestart->setText(z("²¥·Å"));
+		ui.pushButtonpausestart->setText(z("æ’­æ”¾"));
 	}
 }
 /// <summary>
-/// ÏìÓ¦Í£Ö¹°´Å¥µã»÷
+/// å“åº”åœæ­¢æŒ‰é’®ç‚¹å‡»
 /// </summary>
 void MusicPlayDlg::buttonStopClick()
 {
 	player->stop();
 }
 /// <summary>
-/// ÏÂÒ»Ê×
+/// ä¸‹ä¸€é¦–
 /// </summary>
 void MusicPlayDlg::buttonNextClick()
 {
-	auto len = listModel->rowCount();//ºÍlistviewµÄchildrenÊıÁ¿²»Ò»ÖÂ
+	auto len = listModel->rowCount();//å’Œlistviewçš„childrenæ•°é‡ä¸ä¸€è‡´
 	if (len == 0)
 		return;
 	auto cur = ui.musicListView->currentIndex().row();
@@ -110,7 +110,7 @@ void MusicPlayDlg::buttonNextClick()
 	player->play();
 }
 /// <summary>
-/// ÉÏÒ»Ê×
+/// ä¸Šä¸€é¦–
 /// </summary>
 void MusicPlayDlg::buttonPreClick()
 {
@@ -133,7 +133,7 @@ void MusicPlayDlg::buttonPreClick()
 	player->play();
 }
 /// <summary>
-/// »ñÈ¡Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
+/// è·å–ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 /// </summary>
 /// <param name="path"></param>
 /// <returns></returns>
@@ -153,7 +153,7 @@ QFileInfoList GetFileList(QString path)
 	return file_list;
 }
 /// <summary>
-/// Ñ¡ÔñÄ¿Â¼°´Å¥µã»÷
+/// é€‰æ‹©ç›®å½•æŒ‰é’®ç‚¹å‡»
 /// </summary>
 void MusicPlayDlg::buttonBrowserClick()
 {
@@ -168,21 +168,21 @@ void MusicPlayDlg::buttonBrowserClick()
 
 		strlist.clear();
 
-		for each (auto file in files)
+		for(auto file : files)
 		{
 			auto fullpath = file.filePath();
 			if (!fullpath.endsWith(".mp3") && !fullpath.endsWith(".wav"))
 				continue;
 			strlist << fullpath;
 		}
-		listModel->setStringList(strlist);//ĞèÒªÖØĞÂÉèÖÃ£¬ÒòÎª´Ëº¯ÊıÊÇ¸´ÖÆºóset
+		listModel->setStringList(strlist);//éœ€è¦é‡æ–°è®¾ç½®ï¼Œå› ä¸ºæ­¤å‡½æ•°æ˜¯å¤åˆ¶åset
 	}
 }
 #pragma endregion
 
-#pragma region ĞÅºÅÏìÓ¦
+#pragma region ä¿¡å·å“åº”
 /// <summary>
-/// ÏìÓ¦²¥·ÅÊ±³¤±ä»¯
+/// å“åº”æ’­æ”¾æ—¶é•¿å˜åŒ–
 /// </summary>
 /// <param name="position"></param>
 void MusicPlayDlg::playerPositonChange(qint64 position)
@@ -190,16 +190,16 @@ void MusicPlayDlg::playerPositonChange(qint64 position)
 	ui.musicprogress->setValue(position / 1000);
 }
 /// <summary>
-/// ×ÊÔ´Ê±³¤±ä»¯£¨ÏìÓ¦ÇĞ»»²¥·Å×ÊÔ´£©
+/// èµ„æºæ—¶é•¿å˜åŒ–ï¼ˆå“åº”åˆ‡æ¢æ’­æ”¾èµ„æºï¼‰
 /// </summary>
 /// <param name="len"></param>
 void MusicPlayDlg::playerDurationChange(qint64 len)
 {
-	ui.musicprogress->setRange(0, len / 1000);//×ª»¯ÎªÃë
+	ui.musicprogress->setRange(0, len / 1000);//è½¬åŒ–ä¸ºç§’
 	ui.musicprogress->setValue(0);
 }
 /// <summary>
-/// ÏìÓ¦ÒôÁ¿±ä»¯
+/// å“åº”éŸ³é‡å˜åŒ–
 /// </summary>
 /// <param name="value"></param>
 void MusicPlayDlg::columnSliderValueChange(int value)
@@ -207,7 +207,7 @@ void MusicPlayDlg::columnSliderValueChange(int value)
 	ao->setVolume(value);
 }
 /// <summary>
-/// ÏìÓ¦²¥·ÅËÙ¶È±ä»¯
+/// å“åº”æ’­æ”¾é€Ÿåº¦å˜åŒ–
 /// </summary>
 /// <param name="index"></param>
 void MusicPlayDlg::combCurIndexChange(int index)
@@ -228,7 +228,7 @@ void MusicPlayDlg::combCurIndexChange(int index)
 	}
 }
 /// <summary>
-/// ÏìÓ¦²¥·Å×´Ì¬±ä»¯
+/// å“åº”æ’­æ”¾çŠ¶æ€å˜åŒ–
 /// </summary>
 /// <param name="state"></param>
 void MusicPlayDlg::playerStateChange(QMediaPlayer::PlaybackState state)
@@ -236,20 +236,20 @@ void MusicPlayDlg::playerStateChange(QMediaPlayer::PlaybackState state)
 	switch (state)
 	{
 	case QMediaPlayer::StoppedState:
-		ui.pushButtonpausestart->setText(z("²¥·Å"));
+		ui.pushButtonpausestart->setText(z("æ’­æ”¾"));
 		break;
 	case QMediaPlayer::PlayingState:
-		ui.pushButtonpausestart->setText(z("ÔİÍ£"));
+		ui.pushButtonpausestart->setText(z("æš‚åœ"));
 		break;
 	case QMediaPlayer::PausedState:
-		ui.pushButtonpausestart->setText(z("²¥·Å"));
+		ui.pushButtonpausestart->setText(z("æ’­æ”¾"));
 		break;
 	default:
 		break;
 	}
 }
 /// <summary>
-/// ÊÖ¶¯Ñ¡Ôñ¸èÇú
+/// æ‰‹åŠ¨é€‰æ‹©æ­Œæ›²
 /// </summary>
 /// <param name="index"></param>
 void MusicPlayDlg::listViewDoubleClick(const QModelIndex& index)
@@ -261,7 +261,7 @@ void MusicPlayDlg::listViewDoubleClick(const QModelIndex& index)
 #pragma endregion
 
 /// <summary>
-/// ÖØĞ´´°¿Ú¹Ø±ÕÊÂ¼ş
+/// é‡å†™çª—å£å…³é—­äº‹ä»¶
 /// </summary>
 /// <param name=""></param>
 void MusicPlayDlg::closeEvent(QCloseEvent*)

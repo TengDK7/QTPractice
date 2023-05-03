@@ -1,4 +1,4 @@
-#include "SummaryToolForm.h"
+ï»¿#include "SummaryToolForm.h"
 #include"qmessagebox.h"
 #include"qlabel.h"
 #include"qpushbutton.h"
@@ -13,7 +13,7 @@
 #include"FileOperatorDlg.h"
 #include"ImportLibraryDlg.h"
 
-#define z QString::fromLocal8Bit//Í¨ÓÃºê
+#define z QString::fromUtf8//é€šç”¨å®
 
 SummaryToolForm::SummaryToolForm(QWidget *parent)
     : QMainWindow(parent)
@@ -23,29 +23,29 @@ SummaryToolForm::SummaryToolForm(QWidget *parent)
     InitToolBar();
     InitStatusBar();
 }
-#pragma region ²Ëµ¥À¸
+#pragma region èœå•æ 
 void  SummaryToolForm::InitMenu()
 {
-    QMenu* commondlgitem = new QMenu(z("Í¨ÓÃ¶Ô»°¿ò"));//²Ëµ¥À¸
-    commondlgitem->addAction(z("ÎÄ¼ş¶Ô»°¿ò"));//×Ó²Ëµ¥
-    commondlgitem->addAction(z("×ÖÌå¶Ô»°¿ò"));
-    commondlgitem->addAction(z("ÑÕÉ«¶Ô»°¿ò"));
+    QMenu* commondlgitem = new QMenu(z("é€šç”¨å¯¹è¯æ¡†"));//èœå•æ 
+    commondlgitem->addAction(z("æ–‡ä»¶å¯¹è¯æ¡†"));//å­èœå•
+    commondlgitem->addAction(z("å­—ä½“å¯¹è¯æ¡†"));
+    commondlgitem->addAction(z("é¢œè‰²å¯¹è¯æ¡†"));
 
-    QMenu* msgboxitem = new QMenu(z("ÏûÏ¢¶Ô»°¿ò"));//×Ó²Ëµ¥
-    msgboxitem->addAction(z("ĞÅÏ¢ÏûÏ¢¿ò"));
-    msgboxitem->addAction(z("Ñ¯ÎÊÏûÏ¢¿ò"));
-    msgboxitem->addAction(z("½ô¼±ÏûÏ¢¿ò"));
-    msgboxitem->addAction(z("¾¯¸æÏûÏ¢¿ò"));
+    QMenu* msgboxitem = new QMenu(z("æ¶ˆæ¯å¯¹è¯æ¡†"));//å­èœå•
+    msgboxitem->addAction(z("ä¿¡æ¯æ¶ˆæ¯æ¡†"));
+    msgboxitem->addAction(z("è¯¢é—®æ¶ˆæ¯æ¡†"));
+    msgboxitem->addAction(z("ç´§æ€¥æ¶ˆæ¯æ¡†"));
+    msgboxitem->addAction(z("è­¦å‘Šæ¶ˆæ¯æ¡†"));
 
     commondlgitem->addMenu(msgboxitem);
 
-    QMenu* appitem = new QMenu(z("³ÌĞò"));
-    appitem->addAction(z("¹Ø±Õ"));
+    QMenu* appitem = new QMenu(z("ç¨‹åº"));
+    appitem->addAction(z("å…³é—­"));
 
-    this->menuBar()->addMenu(commondlgitem);//ÏµÍ³²Ëµ¥
+    this->menuBar()->addMenu(commondlgitem);//ç³»ç»Ÿèœå•
     this->menuBar()->addMenu(appitem);
 
-    connect(menuBar(), SIGNAL(triggered(QAction*)), this, SLOT(trigerMenu(QAction*)));//°ó¶¨action
+    connect(menuBar(), SIGNAL(triggered(QAction*)), this, SLOT(trigerMenu(QAction*)));//ç»‘å®šaction
 }
 void SummaryToolForm::trigerMenu(QAction* action)
 {
@@ -54,78 +54,78 @@ void SummaryToolForm::trigerMenu(QAction* action)
 
     auto text = action->text();
 
-    if (text == z("ÎÄ¼ş¶Ô»°¿ò"))
+    if (text == z("æ–‡ä»¶å¯¹è¯æ¡†"))
     {
-        QFileDialog::getOpenFileName(this, z("Ñ¡ÔñÒ»¸öÍ¼Æ¬"),".","Image File(*.jpg *.png)");
+        QFileDialog::getOpenFileName(this, z("é€‰æ‹©ä¸€ä¸ªå›¾ç‰‡"),".","Image File(*.jpg *.png)");
 
-        QFileDialog::getOpenFileNames(this, z("Ñ¡Ôñ¶à¸öÍ¼Æ¬"), ".", "Image File(*.jpg *.png)");
+        QFileDialog::getOpenFileNames(this, z("é€‰æ‹©å¤šä¸ªå›¾ç‰‡"), ".", "Image File(*.jpg *.png)");
 
-        QFileDialog::getSaveFileName(this, z("±£´æÎÄ¼ş"), ".", "Image File(*.jpg *.png)");
+        QFileDialog::getSaveFileName(this, z("ä¿å­˜æ–‡ä»¶"), ".", "Image File(*.jpg *.png)");
     }
-    else if (text == z("×ÖÌå¶Ô»°¿ò"))
+    else if (text == z("å­—ä½“å¯¹è¯æ¡†"))
     {
         bool ok;
         QFontDialog::getFont(&ok);
         if(ok)
-            QMessageBox::information(this, z("ÌáÊ¾"), z("Ñ¡Ôñ×ÖÌå³É¹¦"));
+            QMessageBox::information(this, z("æç¤º"), z("é€‰æ‹©å­—ä½“æˆåŠŸ"));
         else
-            QMessageBox::information(this, z("ÌáÊ¾"), z("Ñ¡Ôñ×ÖÌåÊ§°Ü"));
+            QMessageBox::information(this, z("æç¤º"), z("é€‰æ‹©å­—ä½“å¤±è´¥"));
     }
-    else if (text == z("ÑÕÉ«¶Ô»°¿ò"))
+    else if (text == z("é¢œè‰²å¯¹è¯æ¡†"))
     {
         QColor color = QColorDialog::getColor();
         if (color.isValid())
-            QMessageBox::information(this, z("ÌáÊ¾"), z("Ñ¡ÔñÑÕÉ«³É¹¦"));
+            QMessageBox::information(this, z("æç¤º"), z("é€‰æ‹©é¢œè‰²æˆåŠŸ"));
         else
-            QMessageBox::information(this, z("ÌáÊ¾"), z("Ñ¡ÔñÑÕÉ«Ê§°Ü"));
+            QMessageBox::information(this, z("æç¤º"), z("é€‰æ‹©é¢œè‰²å¤±è´¥"));
 
     }
-    else if (text == z("ĞÅÏ¢ÏûÏ¢¿ò"))
+    else if (text == z("ä¿¡æ¯æ¶ˆæ¯æ¡†"))
     {
-        this->statusBar()->showMessage(z("ĞÅÏ¢ÏûÏ¢¿ò"), 5000);
+        this->statusBar()->showMessage(z("ä¿¡æ¯æ¶ˆæ¯æ¡†"), 5000);
 
-        QMessageBox::information(this, z("ÌáÊ¾"), z("ÕâÊÇĞÅÏ¢ÏûÏ¢¿ò_1"));
-        QMessageBox::information(this, z("ÌáÊ¾"), z("ÕâÊÇĞÅÏ¢ÏûÏ¢¿ò_2"), QMessageBox::Ok);
+        QMessageBox::information(this, z("æç¤º"), z("è¿™æ˜¯ä¿¡æ¯æ¶ˆæ¯æ¡†_1"));
+        QMessageBox::information(this, z("æç¤º"), z("è¿™æ˜¯ä¿¡æ¯æ¶ˆæ¯æ¡†_2"), QMessageBox::Ok);
     }
-    else if (text == z("Ñ¯ÎÊÏûÏ¢¿ò"))
+    else if (text == z("è¯¢é—®æ¶ˆæ¯æ¡†"))
     {
-        this->statusBar()->showMessage(z("Ñ¯ÎÊÏûÏ¢¿ò"), 5000);
+        this->statusBar()->showMessage(z("è¯¢é—®æ¶ˆæ¯æ¡†"), 5000);
 
-        QMessageBox::question(this, z("È·ÈÏ"), z("ÕâÊÇÑ¯ÎÊÏûÏ¢¿ò_1"), QMessageBox::Yes | QMessageBox::No);
-        QMessageBox::question(this, z("È·ÈÏ"), z("ÕâÊÇÑ¯ÎÊÏûÏ¢¿ò_2"), QMessageBox::Abort | QMessageBox::Retry | QMessageBox::Ignore);
+        QMessageBox::question(this, z("ç¡®è®¤"), z("è¿™æ˜¯è¯¢é—®æ¶ˆæ¯æ¡†_1"), QMessageBox::Yes | QMessageBox::No);
+        QMessageBox::question(this, z("ç¡®è®¤"), z("è¿™æ˜¯è¯¢é—®æ¶ˆæ¯æ¡†_2"), QMessageBox::Abort | QMessageBox::Retry | QMessageBox::Ignore);
     }
-    else if (text == z("½ô¼±ÏûÏ¢¿ò"))
+    else if (text == z("ç´§æ€¥æ¶ˆæ¯æ¡†"))
     {
-        this->statusBar()->showMessage(z("½ô¼±ÏûÏ¢¿ò"), 5000);
+        this->statusBar()->showMessage(z("ç´§æ€¥æ¶ˆæ¯æ¡†"), 5000);
 
-        QMessageBox::critical(this, z("½ô¼±"), z("ÕâÊÇ½ô¼±ÏûÏ¢¿ò"), QMessageBox::Ok);
+        QMessageBox::critical(this, z("ç´§æ€¥"), z("è¿™æ˜¯ç´§æ€¥æ¶ˆæ¯æ¡†"), QMessageBox::Ok);
     }
-    else if (text == z("¾¯¸æÏûÏ¢¿ò"))
+    else if (text == z("è­¦å‘Šæ¶ˆæ¯æ¡†"))
     {
-        this->statusBar()->showMessage(z("¾¯¸æÏûÏ¢¿ò"), 5000);
+        this->statusBar()->showMessage(z("è­¦å‘Šæ¶ˆæ¯æ¡†"), 5000);
 
-        QMessageBox::warning(this, z("¾¯¸æ"), z("ÕâÊÇ¾¯¸æÏûÏ¢¿ò"), QMessageBox::Ok | QMessageBox::Cancel);
+        QMessageBox::warning(this, z("è­¦å‘Š"), z("è¿™æ˜¯è­¦å‘Šæ¶ˆæ¯æ¡†"), QMessageBox::Ok | QMessageBox::Cancel);
     }
-    else if (text == z("¹Ø±Õ"))
+    else if (text == z("å…³é—­"))
     {
-        this->close();//¹Ø±Õ¶Ô»°¿ò
+        this->close();//å…³é—­å¯¹è¯æ¡†
     }
 }
 #pragma endregion
 
 
-#pragma region ¹¤¾ßÀ¸
+#pragma region å·¥å…·æ 
 void SummaryToolForm::InitToolBar()
 {
-    QAction* openfile = new QAction(z("´ò¿ª"), this);
-    QAction* closefile = new QAction(z("¹Ø±Õ"), this);
-    QAction* threadtest = new QAction(z("Ïß³Ì"), this);
-    QAction* drawfun = new QAction(z("»æÍ¼"), this);
-    QAction* musicplay = new QAction(z("ÒôÀÖ"), this);
-    QAction* vidioplay = new QAction(z("ÊÓÆµ"),this);
-    QAction* layouttest = new QAction(z("²¼¾Ö"), this);
-    QAction* fileoperator = new QAction(z("ÎÄ¼ş"), this);
-    QAction* loadlibrary = new QAction(z("¼ÓÔØ¿â"), this);
+    QAction* openfile = new QAction(z("æ‰“å¼€"), this);
+    QAction* closefile = new QAction(z("å…³é—­"), this);
+    QAction* threadtest = new QAction(z("çº¿ç¨‹"), this);
+    QAction* drawfun = new QAction(z("ç»˜å›¾"), this);
+    QAction* musicplay = new QAction(z("éŸ³ä¹"), this);
+    QAction* vidioplay = new QAction(z("è§†é¢‘"),this);
+    QAction* layouttest = new QAction(z("å¸ƒå±€"), this);
+    QAction* fileoperator = new QAction(z("æ–‡ä»¶"), this);
+    QAction* loadlibrary = new QAction(z("åŠ è½½åº“"), this);
 
     connect(openfile, SIGNAL(triggered()), this, SLOT(openFile()));
     connect(closefile, SIGNAL(triggered()), this, SLOT(closeFIle()));
@@ -150,16 +150,16 @@ void SummaryToolForm::InitToolBar()
 
 void SummaryToolForm::openFile()
 {
-    QMessageBox::information(this, z("ÌáÊ¾"), z("´ò¿ªÎÄ¼ş"));
+    QMessageBox::information(this, z("æç¤º"), z("æ‰“å¼€æ–‡ä»¶"));
 }
 
 void SummaryToolForm::closeFIle()
 {
-    QMessageBox::information(this, z("ÌáÊ¾"), z("¹Ø±ÕÎÄ¼ş"));
+    QMessageBox::information(this, z("æç¤º"), z("å…³é—­æ–‡ä»¶"));
 }
 void SummaryToolForm::openthreaddlg()
 {
-    QThreadDlg* dlg = new QThreadDlg();//¶Ô»°¿ò
+    QThreadDlg* dlg = new QThreadDlg();//å¯¹è¯æ¡†
     dlg->setModal(true);
     dlg->show();
 }
@@ -200,17 +200,17 @@ void SummaryToolForm::openloadlibrarydlg()
 }
 #pragma endregion
 
-#pragma region ×´Ì¬À¸
+#pragma region çŠ¶æ€æ 
 void SummaryToolForm::InitStatusBar()
 {
-    QLabel* infolabel1 = new QLabel(z("Ò»°ãĞÅÏ¢1"));
-    QLabel* infolabel2 = new QLabel(z("Ò»°ãĞÅÏ¢2"));
+    QLabel* infolabel1 = new QLabel(z("ä¸€èˆ¬ä¿¡æ¯1"));
+    QLabel* infolabel2 = new QLabel(z("ä¸€èˆ¬ä¿¡æ¯2"));
 
-    QPushButton* btnMsg = new QPushButton(z("Ò»¸ö°´Å¥"));
+    QPushButton* btnMsg = new QPushButton(z("ä¸€ä¸ªæŒ‰é’®"));
     connect(btnMsg, SIGNAL(clicked()), this, SLOT(statusBtnClick()));
 
-    QLabel* still1 = new QLabel(z("ÓÀ¾ÃĞÅÏ¢1"));
-    QLabel* still2 = new QLabel(z("ÓÀ¾ÃĞÅÏ¢2"));
+    QLabel* still1 = new QLabel(z("æ°¸ä¹…ä¿¡æ¯1"));
+    QLabel* still2 = new QLabel(z("æ°¸ä¹…ä¿¡æ¯2"));
 
     this->statusBar()->addWidget(infolabel1);
     this->statusBar()->addWidget(infolabel2);
@@ -222,6 +222,6 @@ void SummaryToolForm::InitStatusBar()
 }
 void SummaryToolForm::statusBtnClick()
 {
-    QMessageBox::information(this, z("ÌáÊ¾"), z("×´Ì¬À¸°´Å¥µã»÷"));
+    QMessageBox::information(this, z("æç¤º"), z("çŠ¶æ€æ æŒ‰é’®ç‚¹å‡»"));
 }
 #pragma endregion
